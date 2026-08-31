@@ -2,7 +2,7 @@
 
 ## How It Looks
  
-**1. Select a ship, sailing date, trip length, and planning priority. Each ship card shows key specs at a glance: guest capacity, gross tonnage (GT), draft, crew size, and a ship-size guest experience score.**
+**1. Select a ship, sailing date, trip length, and planning priority. Each ship card shows key specs at a glance: guest capacity, gross tonnage (GT), draft, crew size, and a ship-size experience score.**
  
 ![Select a ship](docs/fig1.png)
  
