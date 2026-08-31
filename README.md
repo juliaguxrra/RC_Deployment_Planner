@@ -6,11 +6,11 @@
  
 ![Select a ship](docs/fig1.png)
  
-**2. The model scores the top match and explains why. Including cost, guest spend, and experience score. It can explain the recommendation using either a rule-based approach or AI (Gemini).**
+**2. The model scores the top match and explains why. Including cost, guest spend, and experience score. It also factors in seasonality, adjusting guest spend up or down depending on the time of year. It can explain the recommendation using either a rule-based approach or AI (Gemini).**
  
 ![Recommended plan](docs/fig2.png)
  
-**3. The recommended itinerary shows up on a map with a day-by-day breakdown of ports, spend, and fees.**
+**3.The recommended itinerary shows up on a map with the exact geographic route the trip follows, along with a day-by-day breakdown of ports, spend, and fees.**
  
 ![Itinerary map](docs/fig3.png)
  
