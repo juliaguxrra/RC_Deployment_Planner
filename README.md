@@ -6,7 +6,7 @@
  
 ![Select a ship](docs/fig1.png)
  
-**2. The model scores the top match and explains why. Including cost, guest spend, and experience score. It also factors in seasonality, adjusting guest spend up or down depending on the time of year. It can explain the recommendation using either a rule-based approach or AI (Gemini).**
+**2. The model scores the top match and explains why. Including cost, guest spend, and experience score. It also factors in seasonality, adjusting guest spend up or down depending on the time of year. It can explain the recommendation using either a rule-based approach or AI (Gemini). Every result is labeled as either verified (sourced from published data) or modeled (an estimate), so it's always clear what's backed by a real source versus what should be treated as an approximation.**
  
 ![Recommended plan](docs/fig2.png)
  
