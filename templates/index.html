@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Royal Caribbean Deployment Planning Demo · Julia Guerra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div style="text-align: center; width: 100%;">
+      <span class="eyebrow">Deployment Planning Model · Julia Guerra</span>
+      <h1>Royal Caribbean Deployment Planning Demo</h1>
+    </div>
+  </div>
+</header>
+<main>
+  <section id="picker">
+    <div class="section-head">
+      <div>
+        <h2>Select a Ship</h2>
+      </div>
+    </div>
+    <div class="ship-grid" id="shipGrid"></div>
+    <div class="route-row planner-controls">
+      <div class="field-inline">
+        <label for="dateTrigger">Leaving on</label>
+        <div class="custom-date">
+          <input id="start" name="start" type="hidden">
+          <button id="dateTrigger" class="date-trigger" type="button" aria-expanded="false">
+            <span id="dateLabel"></span>
+            <span aria-hidden="true">⌄</span>
+          </button>
+          <div id="datePopup" class="date-popup" hidden>
+            <div class="date-popup-head">
+              <button id="previousMonth" type="button" aria-label="Previous month">←</button>
+              <strong id="monthLabel"></strong>
+              <button id="nextMonth" type="button" aria-label="Next month">→</button>
+            </div>
+            <div class="weekday-row">
+              <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+            </div>
+            <div id="calendarDays" class="calendar-days"></div>
+            <button id="todayButton" class="today-button" type="button">Choose today</button>
+          </div>
+        </div>
+      </div>
+      <div class="field-inline">
+        <label for="nights">Number of nights</label>
+        <select id="nights" name="nights"></select>
+      </div>
+      <div class="field-inline">
+        <label for="objective">Planning priority</label>
+        <select id="objective" name="objective">
+          <option value="balanced">Balanced</option>
+          <option value="guest">Guest experience</option>
+          <option value="cost">Lower cost</option>
+          <option value="distance">Shorter distance</option>
+        </select>
+      </div>
+      <!-- Later I could add more priorities, such as revenue or fuel use -->
+      <button class="evaluate-btn" id="evaluateBtn" type="button">Compare Plans</button>
+    </div>
+  </section>
+  <section id="result">
+    <div class="section-head">
+      <div>
+        <h2>Your Recommended Plan</h2>
+      </div>
+    </div>
+    <div class="summary" id="summary"></div>
+    <div class="ai-panel" id="aiPanel"></div>
+    <p class="hint compare-hint">Other options:</p>
+    <div class="candidate-grid" id="candidateGrid"></div>
+  </section>
+  <section id="itinerary-section">
+    <div class="section-head">
+      <div>
+        <h2 id="scheduleTitle">Your Cruise Plan</h2>
+      </div>
+    </div>
+    <div class="map-panel">
+      <div id="mapView"></div>
+    </div>
+    <div class="calendar" id="calendar"></div>
+  </section>
+  <details id="methodology">
+    <summary>
+      <span class="eyebrow">Methodology &amp; Sources</span>
+      <span class="details-hint">Click to see how it works</span>
+    </summary>
+    <div class="methodology-body">
+      <div class="panel">
+        <h3>How It Works</h3>
+        <ul id="logicList">
+          <li><b>Your choices:</b> Uses the ship, date, trip length, and planning priority you select.</li>
+          <li><b>Route match:</b> Uses a matching published Royal Caribbean route when available. Otherwise, it creates a labeled sample route.</li>
+          <li><b>Basic checks:</b> Compares ship draft, estimated port space, and expected guest volume.</li>
+          <li><b>Route details:</b> Calculates distance and counts port days and days at sea.</li>
+          <li><b>Plan score:</b> Uses estimated experience, cost, guest spending, and distance.</li>
+          <li><b>Recommendation:</b> Applies your priority, ranks the options, and recommends the best match.</li>
+        </ul>
+        <p class="fine">Routes come from Royal Caribbean’s public website. Draft, port capacity, costs, guest spending, and experience scores are estimates I created for this prototype. Gemini explains the recommendation; the scoring model chooses it.</p>
+        <!-- With more time, I could replace the estimates with live operating data. -->
+      </div>
+      <div class="panel">
+        <h3>Sources</h3>
+        <div class="source-controls">
+          <input type="search" id="sourceSearch" placeholder="Search sources…" aria-label="Search sources">
+          <div class="chip-group" id="sourceFilterChips"></div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th data-key="fact_type">Type</th>
+              <th data-key="source_title">Source</th>
+              <th data-key="publisher">Publisher</th>
+              <th data-key="accessed_date">Accessed</th>
+            </tr>
+          </thead>
+          <tbody id="sources"></tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
