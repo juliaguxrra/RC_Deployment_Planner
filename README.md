@@ -6,7 +6,7 @@
  
 ![Select a ship](docs/fig1.png)
  
-**2. The model scores the top match and explains why — including cost, guest spend, and experience score.**
+**2. The model scores the top match and explains why. Including cost, guest spend, and experience score. It can explain the recommendation using either a rule-based approach or AI (Gemini).**
  
 ![Recommended plan](docs/fig2.png)
  
@@ -14,7 +14,7 @@
  
 ![Itinerary map](docs/fig3.png)
  
-**4. Every number is traceable — the methodology panel shows what's verified vs. modeled, with links to sources.**
+**4. The methodology panel shows what's verified vs. modeled, with links to sources.**
  
 ![Methodology and sources](docs/fig4.png)
  
